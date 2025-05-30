@@ -1,0 +1,134 @@
+Operating Systems - IT2244
+Day 02 – Practical Log (16th March 2025)
+----------------------------------------
+
+Connecting to a Remote Server using PuTTY
+Here’s how I connected to the server during our practical:
+
+1. Launching PuTTY – I searched for PuTTY on my system and opened the application.
+2. Entering Server Details – I typed in the server IP address: 172.16.140.150
+3. Connecting to the Server – After entering the IP, I clicked Open.
+4. Logging In – I logged in using my username and the password (password input is hidden while typing).
+5. Server Access Granted – Once authenticated, I successfully accessed the server terminal.
+
+Basic Linux Commands I Practiced
+--------------------------------
+
+pwd – Displays the present working directory. Example output when logged in: /home/username
+
+ls – Lists files and directories in the current directory.
+Options:
+- ls -l → shows detailed file info
+- ls -a → shows hidden files
+
+ls -ltr – Sorted listing in long format by modification time (oldest first).
+Example Output:
+total 5
+lrwxrwxrwx  bin -> /home/User/.local/bin
+-rwxrwxr--+ Names.txt~
+-r-xr--rwx+ Names.txt
+-rw-rwxr--+ New.txt
+-rw-rwxr--+ New1.txt
+-rw-rwxr--+ New2.txt
+-rw-rwxr--+ days.sh
+-rw-rwxr--+ vi
+
+Creating and Editing Files
+--------------------------
+
+Creating an empty file:
+touch abc.txt
+
+Opening a file in Vi editor:
+vi filename.txt
+- Press i to start typing
+- Press Esc then type :wq to save and exit
+
+Sample content added using vi acd.txt:
+John 32 Engineer
+Jane 22 Student
+Bob 33 Doctor
+Mary 25 Teacher
+Alice 32 Nurse
+
+Viewing File Content
+--------------------
+
+- more abc.txt – View file content page by page (only forward)
+- less abc.txt – Similar to more, but allows forward and backward navigation
+
+CSV File Handling
+-----------------
+
+To create a CSV file:
+vi pqr.csv
+
+Searching for Files
+-------------------
+
+To find a file by name:
+find . -name "file.txt"
+
+To find all directories:
+find . -type d
+
+To find all CSV files:
+find . -name "*.csv"
+Output: ./pqr.csv
+
+Counting Lines in a File
+------------------------
+
+wc -l filename.txt
+Example: wc -l xyz.txt
+Output: 1 xyz.txt
+
+Extracting Data from Files
+--------------------------
+
+Using cut:
+- Get 2nd column: cut -d ',' -f2 pqr.csv
+- Get 1st and 3rd columns: cut -d ',' -f1,3 pqr.csv
+
+Using awk:
+- Get 1st column: awk -F ',' '{print $1}' pqr.csv
+
+Using head and tail
+-------------------
+
+- View first 5 lines: head -n 5 pqr.csv
+- View last 2 lines: tail -n 2 pqr.csv
+
+Appending/Extracting Data Between Files
+---------------------------------------
+
+Extract 2nd column and append to a new file:
+cut -d ',' -f2 pqr.csv >> pqrNew.csv
+
+Append first 3 rows to another file:
+head -n 3 pqr.csv >> rows.csv
+
+File Permissions in Linux
+-------------------------
+
+Permissions are shown as: -rwxr-xr--
+- Owner: rwx (read, write, execute)
+- Group: r-x (read, execute)
+- Others: r-- (read-only)
+
+Octal representation:
+- 777 – Full permissions for all
+- 755 – Full for owner, read & execute for group/others
+- 644 – Read/write for owner, read-only for group/others
+- 700 – Full for owner, none for others
+
+Windows Command Prompt – File Attributes
+----------------------------------------
+
+Used ATTRIB to change file attributes:
+
+Steps:
+1. Created abc.txt and xyz.txt
+2. Hid abc.txt using: ATTRIB +H abc.txt
+3. Made it visible again: ATTRIB -H abc.txt
+4. Made it read-only: ATTRIB +R abc.txt
